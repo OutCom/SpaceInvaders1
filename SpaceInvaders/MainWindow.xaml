@@ -1,0 +1,199 @@
+﻿<Window x:Name="MainWin" x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpaceInvaders"
+        mc:Ignorable="d"
+        Loaded="OnLoad"
+        KeyDown="StartGame"
+        Title="Space Invaders" Height="350" Width="525" ResizeMode="NoResize" Background="#FF161616">
+
+    <Grid x:Name="ParentGrid">
+        <Grid x:Name="Start" d:IsHidden="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblTitleS" Content="SPACE" Margin="142.605,63.651,153.514,0" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="222.881"/>
+            <Label x:Name="lblTitleS2" Content="INVADERS" Margin="118.126,108.884,129.035,0" Foreground="#FF1BED1C" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center"/>
+            <Label x:Name="lblTitleInfo" Content="Press ANY KEY to start" Margin="103.499,0,104.083,39.708" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Bottom" FontFamily="Eurostile ExtendedTwo" FontSize="14.667" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="Label.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="lblTitleInfo"
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0" To="0.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Label.Triggers>
+            </Label>
+
+        </Grid>
+        <Grid x:Name="Stars">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Star" Content="" HorizontalAlignment="Left" Margin="69.45,74.622,0,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star1" Content="" HorizontalAlignment="Left" Margin="69.45,136.4,0,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star2" Content="" HorizontalAlignment="Left" Margin="153.894,53.733,0,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star3" Content="" HorizontalAlignment="Left" Margin="153.894,0,0,118.378" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star4" Content="" HorizontalAlignment="Left" Margin="49.45,0,0,56.155" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star5" Content="" HorizontalAlignment="Left" Margin="19.228,32.844,0,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star6" Content="" HorizontalAlignment="Left" Margin="237.895,0,0,132.6" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star7" Content="" HorizontalAlignment="Right" Margin="0,39.956,232.327,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star8" Content="" HorizontalAlignment="Right" Margin="0,152.4,94.549,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star9" Content="" HorizontalAlignment="Right" Margin="0,0,154.549,118.378" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star10" Content="" HorizontalAlignment="Right" Margin="0,61.289,71.882,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star11" Content="" HorizontalAlignment="Right" Margin="0,0,44.326,56.155" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star12" Content="" HorizontalAlignment="Right" Margin="0,0,30.548,153.932" VerticalAlignment="Bottom" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+            <Label x:Name="Star13" Content="" HorizontalAlignment="Right" Margin="0,46.179,138.548,0" VerticalAlignment="Top" Background="#FFF0FF00" Height="3" Width="3" Loaded="Star_Loaded"/>
+        </Grid>
+        <Grid x:Name="Instructions" d:IsHidden="True">
+
+            <Label x:Name="lblUpgrades" Content="Upgrades" Foreground="#FFFAFAFA" Height="43.9" FontFamily="Eurostile ExtendedTwo" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,85.328,10,0" HorizontalAlignment="Right" Width="180"/>
+            <Label x:Name="lblInstructions" Content="Instructions" Margin="132.938,13.32,131.181,0" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="lblEnemies" Content="Enemies" Foreground="#FFFAFAFA" Height="43.9" FontFamily="Eurostile ExtendedTwo" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="10,85.328,329,0" Width="180"/>
+            <Image x:Name="medEnemy" HorizontalAlignment="Left" Margin="38.223,0,0,115.522" Width="32" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Height="32.012" VerticalAlignment="Bottom"/>
+            <Label x:Name="lblEn20" Content="= 20 Points" Foreground="#FFFAFAFA" FontFamily="Eurostile ExtendedTwo" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="70.223,0,0,115.522" Width="135" HorizontalAlignment="Left" d:LayoutOverrides="Width" Height="32.012" VerticalAlignment="Bottom"/>
+            <Image x:Name="easEnemy" HorizontalAlignment="Left" Margin="38.223,0,0,152.522" Width="32" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="32" VerticalAlignment="Bottom" Stretch="Fill"/>
+            <Label x:Name="lblEn10" Content="= 10 Points" Foreground="#FFFAFAFA" FontFamily="Eurostile ExtendedTwo" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="70.223,0,0,152.522" Width="135" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Left" d:LayoutOverrides="Width"/>
+            <Image x:Name="harEnemy" HorizontalAlignment="Left" Margin="38.223,0,0,78.522" Width="32" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="32" VerticalAlignment="Bottom" Stretch="Fill"/>
+            <Label x:Name="lblEn30" Content="= 30 Points" Foreground="#FFFAFAFA" FontFamily="Eurostile ExtendedTwo" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="70.223,0,0,78.522" Height="32" Width="135" VerticalAlignment="Bottom" HorizontalAlignment="Left" d:LayoutOverrides="Width"/>
+        </Grid>
+        <Grid x:Name="GameScreen" Width="519">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Canvas x:Name="Border" HorizontalAlignment="Left" Width="519" Height="224.953" VerticalAlignment="Top" Margin="0,25,0,0">
+                <Canvas x:Name="grdCluster" Height="126.003" Width="230">
+                    <Image x:Name="medEnemy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="1.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="1.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="1.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="1.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="1.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="1.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="22.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="22.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy1" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="22.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy2" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="22.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy2" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="22.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy2" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="22.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy3" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="43.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy3" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="43.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy3" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="43.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy4" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="43.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy4" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="43.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy4" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="43.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy5" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="64.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy5" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="64.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy5" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="64.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy6" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="64.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy6" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="64.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy6" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="64.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy7" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="85.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy7" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="85.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy7" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="85.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy8" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="85.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy8" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="85.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy8" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="85.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy9" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="106.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy9" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="106.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy9" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="106.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy10" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="106.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy10" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="106.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy10" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="106.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy11" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="127.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy11" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="127.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy11" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" Canvas.Left="127.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy12" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" Canvas.Left="127.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy12" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="127.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy12" HorizontalAlignment="Left" Width="16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" Canvas.Left="127.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy13" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" HorizontalAlignment="Left" Width="16" Canvas.Left="148.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy13" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="148.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy13" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Canvas.Left="148.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy14" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="148.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy14" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="148.996" Canvas.Top="65.665"/>
+                    <Image x:Name="medEnemy1_Copy15" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" HorizontalAlignment="Left" Width="16" Canvas.Left="169.996" Canvas.Top="44.665"/>
+                    <Image x:Name="harEnemy1_Copy14" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="148.996" Canvas.Top="23.662"/>
+                    <Image x:Name="easEnemy1_Copy15" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="169.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy15" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Canvas.Left="169.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="169.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="169.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy16" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="169.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy17" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" HorizontalAlignment="Left" Width="16" Canvas.Left="190.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy17" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="190.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy17" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Canvas.Left="190.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy18" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="190.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy18" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="190.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy18" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="190.996" Canvas.Top="23.662"/>
+                    <Image x:Name="medEnemy1_Copy19" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" HorizontalAlignment="Left" Width="16" Canvas.Left="211.996" Canvas.Top="44.665"/>
+                    <Image x:Name="easEnemy1_Copy19" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="211.996" Canvas.Top="86.665"/>
+                    <Image x:Name="harEnemy1_Copy19" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Height="15.995" VerticalAlignment="Top" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Canvas.Left="211.996" Canvas.Top="2.662"/>
+                    <Image x:Name="easEnemy1_Copy20" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" HorizontalAlignment="Left" Width="16" Height="16" Canvas.Left="211.996" Canvas.Top="107.665"/>
+                    <Image x:Name="medEnemy1_Copy20" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="211.996" Canvas.Top="65.665"/>
+                    <Image x:Name="harEnemy1_Copy20" OpacityMask="#FF161616" Panel.ZIndex="1" Loaded="enemyAnim" Stretch="Fill" Source="Icon-Gear.png" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Canvas.Left="211.996" Canvas.Top="23.662"/>
+                </Canvas>
+            </Canvas>
+            <Grid x:Name="DataStores" Height="25" VerticalAlignment="Top" Background="#00000000">
+                <Label x:Name="stcScore" Content="SCORE" HorizontalAlignment="Left" Margin="21.333,0,0,0" Foreground="White" FontFamily="Consolas"/>
+                <Label x:Name="lblScore" Content="&lt;0000&gt;" HorizontalAlignment="Left" Margin="64.316,0,0,0" Foreground="White" FontFamily="Consolas"/>
+                <Label x:Name="stcHiscore" Content="HI-SCORE" HorizontalAlignment="Left" Margin="138.646,0,0,0" Foreground="White" FontFamily="Consolas"/>
+                <Label x:Name="lblHiscore" Content="&lt;0000&gt;" HorizontalAlignment="Left" Margin="206.42,0,0,0" Foreground="White" FontFamily="Consolas"/>
+                <Label x:Name="stcLives" Content="LIVES" HorizontalAlignment="Right" Margin="0,0,166.247,0" Foreground="White" FontFamily="Consolas" Background="#00000000"/>
+                <Image x:Name="imgL1" Margin="368.753,4.5,0,4.5" OpacityMask="#FF161616" Panel.ZIndex="1" Stretch="Fill" HorizontalAlignment="Left" Width="28" Source="Icon-Gear.png"/>
+                <Image x:Name="imgL2" Margin="413.753,4.5,0,4.5" OpacityMask="#FF161616" Panel.ZIndex="1" Stretch="Fill" HorizontalAlignment="Left" Width="28" Source="Icon-Gear.png"/>
+                <Image x:Name="imgL3" Margin="455.753,4.5,0,4.5" OpacityMask="#FF161616" Panel.ZIndex="1" Stretch="Fill" HorizontalAlignment="Left" Width="28" Source="Icon-Gear.png"/>
+            </Grid>
+            <Canvas x:Name="Limiters" Margin="0,23.666,0,11.334">
+                <Image x:Name="imgPlayer" OpacityMask="#FF161616" Panel.ZIndex="1" Height="16" Stretch="Fill" HorizontalAlignment="Left" Width="28" Source="Icon-Gear.png" Canvas.Left="245.5" Canvas.Top="272"/>
+            </Canvas>
+
+        </Grid>
+        <Grid x:Name="PauseOverlay" d:IsHidden="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblTitleS1" Content="SPACE" Margin="10,15.651,10,0" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="499" Panel.ZIndex="1"/>
+            <Label x:Name="lblTitleS3" Content="INVADERS" Margin="10,60.884,10,0" Foreground="#FF1BED1C" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+            <Label x:Name="lblExitInstruction" Content="Press ESCAPE to continue " Margin="10,0,10,36.708" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Bottom" FontFamily="Eurostile ExtendedTwo" FontSize="14.667" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="1">
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+        							Storyboard.TargetName="lblTitleInfo"
+        							Storyboard.TargetProperty="Opacity"
+        							From="1.0" To="0.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Label.Triggers>
+            </Label>
+            <Rectangle x:Name="Overlay" Fill="#E5121212" Margin="0,-1.667,0,0" Stroke="Black"/>
+            <Label x:Name="lblExitInstruction1" Content="Press SPACE to exit to title" Margin="10,0,10,67.921" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Bottom" FontFamily="Eurostile ExtendedTwo" FontSize="14.667" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+
+        </Grid>
+        <Grid x:Name="GameOver" d:IsHidden="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblTitleS4" Content="SPACE" Margin="10,15.651,10,0" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="499" Panel.ZIndex="1"/>
+            <Label x:Name="lblTitleS5" Content="INVADERS" Margin="10,60.884,10,0" Foreground="#FF1BED1C" Height="45.233" VerticalAlignment="Top" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+            <Rectangle x:Name="Overlay1" Fill="#E5121212" Margin="0,-1.667,0,0" Stroke="Black"/>
+            <Label x:Name="lblExitInstruction3" Content="Press ANY KEY to return to title" Margin="10,0,10,67.921" Foreground="#FFFAFAFA" Height="45.233" VerticalAlignment="Bottom" FontFamily="Eurostile ExtendedTwo" FontSize="14.667" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+            <Label x:Name="lblGameOver" Content="GAME OVER" Margin="10,127.117,10,126.65" Foreground="#FFFAFAFA" FontFamily="Eurostile ExtendedTwo" FontSize="29.333" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="499" Panel.ZIndex="1"/>
+
+        </Grid>
+    </Grid>
+</Window>
