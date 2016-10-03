@@ -37,9 +37,9 @@ Class MainWindow
 
     'Variable
 
-    Public fireRate As Integer = 6
+    Public fireRate As Integer = 1
     Public GAME_SPEED As Double = 0.5
-    Public FIRE_SPEED As Integer = 5
+    Public FIRE_SPEED As Integer = 4
     Public STOP_KEY() As Key = {Key.Escape}
     Public LEFT_KEY() As Key = {Key.Left, Key.A}
     Public RIGHT_KEY() As Key = {Key.Right, Key.D}
@@ -364,15 +364,15 @@ Class MainWindow
                 If Canvas.GetTop(laser) < Border.Height Then
                     If ((getLocation(imgPlayer).X) < (getLocation(laser).X + laser.Width)) And
                             ((getLocation(imgPlayer).X + imgPlayer.Width) > getLocation(laser).X) And
-                            (Canvas.GetTop(imgPlayer)) < (Canvas.GetBottom(laser)) And isImmune <> True Then
+                            (getLocation(imgPlayer).Y) <= (getLocation(laser).Y + laser.ActualHeight * 2) And isImmune <> True Then
                         dump.Add(laser)
                         life -= 1
                         If life = 0 Then
                             endGame()
                         Else
                             lastDeathTime = elapsedTime
-                            imgPlayer.Opacity = 0
-                            Canvas.SetLeft(imgPlayer, 0)
+                            imgPlayer.Opacity = 1
+                            Canvas.SetLeft(imgPlayer, Limiters.ActualWidth / 2)
                             isImmune = True
                         End If
                     End If
